@@ -239,7 +239,7 @@ def find_track(linescans):
                     bestXIndex = bestXIndex - 128
         
 
-        if ( np.var(linescans[j] - linescans[j - 1]) < 2.4):
+        if ( np.var(linescans[j] - linescans[j - 1]) < 3 and np.var(linescans[j] - linescans[j - 1]) > 0.2):
           cross_found_list[j] = True
         else:
           cross_found_list[j] = abs(bestXIndex - bestCIndex) > box_width/2
@@ -273,6 +273,18 @@ for row in telemreader:
     linescans.append(arrayline)
 # print 'scan line0:', linescans[0]
 # print 'scan line1:', linescans[1]
+
+# a = np.arange(0,128,1)
+# for i in range(365,385):
+#     find = linescans[i] - linescans[i - 1]
+#     find = ndi.gaussian_filter1d(find,7)
+#     print np.var(linescans[i] - linescans[i - 1]) 
+#     print np.var(find)
+#     plt.title(i)
+#     plt.plot(a,find)
+#     plt.show()
+
+
 
 
 track_center_list, track_found_list, cross_found_list = find_track(linescans)

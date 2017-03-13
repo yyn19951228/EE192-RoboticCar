@@ -275,27 +275,12 @@ for row in telemreader:
 # print 'scan line1:', linescans[1]
 
 
-plotarray = np.arange(0,128,1);
+track_center_list, track_found_list, cross_found_list = find_track(linescans)
 
+for i, (track_center, track_found, cross_found) in enumerate(zip(track_center_list, track_found_list, cross_found_list)):
+   print 'scan # %d center at %d. Track_found = %s, Cross_found = %s' %(i,track_center,track_found, cross_found)
 
-# for j in range(2350,2370):
-#   find = linescans[j] #- linescans[j - 1]
-#   plt.title(j)
-#   plt.plot(plotarray,find)
-#   plt.show()
-#   print (np.var(find))
-
-
-
-
-
-
-# track_center_list, track_found_list, cross_found_list = find_track(linescans)
-
-# for i, (track_center, track_found, cross_found) in enumerate(zip(track_center_list, track_found_list, cross_found_list)):
-#    print 'scan # %d center at %d. Track_found = %s, Cross_found = %s' %(i,track_center,track_found, cross_found)
-
-# plot_all(filename)
+plot_all(filename)
 
 
 
